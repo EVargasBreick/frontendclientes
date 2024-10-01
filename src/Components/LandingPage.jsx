@@ -44,7 +44,7 @@ export default function LandingPage() {
   };
 
   const handleWhatsAppRedirect = () => {
-    const phoneNumber = "+59170565913"; // Replace with your actual WhatsApp number
+    const phoneNumber = "+59169707012"; // Replace with your actual WhatsApp number
     const url = `https://wa.me/${phoneNumber}`;
     window.open(url, "_blank");
   };
@@ -87,7 +87,7 @@ export default function LandingPage() {
                 <Button
                   style={styles.button}
                   onClick={() =>
-                    window.open("https://www.breick.com.bo", "_blank")
+                    window.open("https://breick.com.bo/club-breick/", "_blank")
                   }
                 >
                   Ir A la Web de Breick
