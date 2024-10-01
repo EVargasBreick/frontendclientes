@@ -7,7 +7,7 @@ export default function LandingPage() {
   const navigate = useNavigate();
 
   const styles = {
-    backgroundColor: "#EDEFF1",
+    backgroundColor: "#6A4593",
     height: "100vh",
     color: "white",
     textAlign: "center",
@@ -36,13 +36,10 @@ export default function LandingPage() {
       borderColor: "#eead1a",
       color: "white",
       width: "100%",
-      margin: "10px 0",
       maxWidth: "200px",
     },
     images: {
       width: "calc(20vw + 10vh)",
-      marginBottom: "10vh",
-      marginTop: "20vh",
     },
   };
 
@@ -57,24 +54,27 @@ export default function LandingPage() {
       <Container fluid>
         <Row className="justify-content-center">
           <Col md={6}>
-            <div style={styles.buttonGrid}
-
-            >
-              <div>
-
-              <Image src={BreickLogo} style={styles.images} />
-              </div>
-              <div
+            <div
               style={{
-                backgroundColor: "#61358A",
-                padding: "10px 20px",
-                borderRadius: "5px",
                 display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "column",
+                justifyContent: "center", 
+                alignItems: "center", 
+                height: "100%",
               }}
+            >
+              <div
+                style={{
+                  backgroundColor: "#5cb8b2",
+                  padding: "20px 40px",
+                  borderRadius: "5px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  flexDirection: "column",
+                  gap: "1em",
+                }}
               >
+                <Image src={BreickLogo} style={styles.images} />
                 <div style={styles.title}>
                   SISTEMA DE CONSULTA PARA MIEMBROS CLUB BREICK
                 </div>
