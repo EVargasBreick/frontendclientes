@@ -1,13 +1,13 @@
 import React from "react";
 import { Container, Row, Col, Button, Image } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import BreickLogo from "../assets/Breick-logo.png";
+import BreickLogo from "../assets/club-breick-logo.png";
 
 export default function LandingPage() {
   const navigate = useNavigate();
 
   const styles = {
-    backgroundColor: "#6a4593",
+    backgroundColor: "#EDEFF1",
     height: "100vh",
     color: "white",
     textAlign: "center",
@@ -40,8 +40,9 @@ export default function LandingPage() {
       maxWidth: "200px",
     },
     images: {
-      maxWidth: "35%",
+      width: "calc(20vw + 10vh)",
       marginBottom: "10vh",
+      marginTop: "20vh",
     },
   };
 
@@ -56,31 +57,48 @@ export default function LandingPage() {
       <Container fluid>
         <Row className="justify-content-center">
           <Col md={6}>
-            <div style={styles.buttonGrid}>
+            <div style={styles.buttonGrid}
+
+            >
+              <div>
+
               <Image src={BreickLogo} style={styles.images} />
-              <div style={styles.title}>
-                SISTEMA DE CONSULTA PARA MIEMBROS CLUB BREICK
               </div>
-              <Button
-                style={styles.button}
-                onClick={() => navigate("/consultar_puntos")}
+              <div
+              style={{
+                backgroundColor: "#61358A",
+                padding: "10px 20px",
+                borderRadius: "5px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "column",
+              }}
               >
-                Consultar Puntos
-              </Button>
-              <Button
-                style={styles.button}
-                onClick={() =>
-                  window.open("https://www.breick.com.bo", "_blank")
-                }
-              >
-                Ir A la Web de Breick
-              </Button>
-              <Button
-                style={styles.button}
-                onClick={() => handleWhatsAppRedirect()}
-              >
-                Contáctanos
-              </Button>
+                <div style={styles.title}>
+                  SISTEMA DE CONSULTA PARA MIEMBROS CLUB BREICK
+                </div>
+                <Button
+                  style={styles.button}
+                  onClick={() => navigate("/consultar_puntos")}
+                >
+                  Consultar Puntos
+                </Button>
+                <Button
+                  style={styles.button}
+                  onClick={() =>
+                    window.open("https://www.breick.com.bo", "_blank")
+                  }
+                >
+                  Ir A la Web de Breick
+                </Button>
+                <Button
+                  style={styles.button}
+                  onClick={() => handleWhatsAppRedirect()}
+                >
+                  Contáctanos
+                </Button>
+              </div>
             </div>
           </Col>
         </Row>
