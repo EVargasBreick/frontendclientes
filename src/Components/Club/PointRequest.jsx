@@ -11,7 +11,7 @@ import {
   Spinner,
   Table,
 } from "react-bootstrap";
-import BreickLogo from "../../assets/Breick-logo.png";
+import BreickLogo from "../../assets/club-breick-logo.png";
 import { getClientPoints } from "../../Services/clubServices";
 
 export default function PointRequest() {
