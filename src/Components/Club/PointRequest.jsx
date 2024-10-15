@@ -21,6 +21,7 @@ export default function PointRequest() {
   const [loading, setLoading] = useState(false);
   const [rewards, setRewards] = useState([]);
   const [showTitle, setShowTitle] = useState(true);
+  const [notFound, setNotFound] = useState("");
 
   const styles = {
     backgroundColor: "#6a4593",
@@ -80,21 +81,32 @@ export default function PointRequest() {
 
   const handleRequestPoints = async (e) => {
     e.preventDefault();
-    setLoading(true); // Show loader
-    setShowPoints(false); // Hide previous result
-    const retrievedPoints = await getClientPoints(codCliente);
-    console.log("Retrieved points", retrievedPoints);
-    if (retrievedPoints.data.code == 200) {
-      console.log("ENTRO AKA");
-      setPoints(retrievedPoints.data.data.puntos);
-      setLoading(false); // Hide loader
-      if (retrievedPoints !== null) {
-        setShowTitle(false); // Hide the title if points are retrieved
-        setRewards(retrievedPoints.data.data.premios); // Retrieve the rewards list
-      } else {
-        setShowTitle(true); // Show the title if no points are retrieved
+    try {
+      setLoading(true); // Show loader
+      setShowPoints(false); // Hide previous result
+      const retrievedPoints = await getClientPoints(codCliente);
+      console.log("Retrieved points", retrievedPoints);
+      if (retrievedPoints.data.code == 200) {
+        setNotFound("");
+        console.log("ENTRO AKA");
+        setPoints(retrievedPoints.data.data.puntos);
+        setLoading(false); // Hide loader
+        if (retrievedPoints !== null) {
+          setShowTitle(false); // Hide the title if points are retrieved
+          setRewards(retrievedPoints.data.data.premios); // Retrieve the rewards list
+        } else {
+          setShowTitle(true); // Show the title if no points are retrieved
+        }
+        setShowPoints(true); // Show the points field
       }
-      setShowPoints(true); // Show the points field
+    } catch (error) {
+      setLoading(false);
+      console.log("Data del error", error.response.data);
+      if (error.response.data.code == 404) {
+        setShowPoints(true);
+        setNotFound(error.response.data.message);
+        setPoints(null);
+      }
     }
   };
 
@@ -137,7 +149,7 @@ export default function PointRequest() {
 
               <Collapse in={showPoints}>
                 <div>
-                  {points !== null ? (
+                  {notFound == "" ? (
                     <>
                       <Alert variant="success" className="mt-3">
                         Tienes {points} puntos disponibles.
@@ -170,7 +182,9 @@ export default function PointRequest() {
                     </>
                   ) : (
                     <Alert variant="danger" className="mt-3">
-                      No se pudo recuperar los puntos. Inténtalo de nuevo.
+                      {notFound != ""
+                        ? notFound
+                        : `No se pudo recuperar los puntos. Inténtalo de nuevo.`}
                     </Alert>
                   )}
                 </div>
